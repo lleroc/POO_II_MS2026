@@ -5,7 +5,8 @@ namespace Sistemas_Animales
 {
     public partial class Form1 : Form
     {
-        private AnimalController _animalController = new AnimalController();
+        private AnimalSqlController _animalController = new AnimalSqlController();
+        bool editar = false;
         public Form1()
         {
             InitializeComponent();
@@ -40,38 +41,76 @@ namespace Sistemas_Animales
             btnEliminar.Enabled = false;
             btnEditar.Enabled = false;
             btnNuevo.Enabled = false;
+
+            editar = false;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            var res = _animalController.Nuevo(txtnombre.Text.Trim(),
-                txtraza.Text.Trim(), cmbSexo.Text, Convert.ToInt32(txtEdad.Value));
-
-            if (res == "ok")
+            if (editar) //voy a editar si es verdadero
             {
-                MessageBox.Show("Se guardo con exito");
-                cargaLista();
-                LimpiaCajas();
+                var res = _animalController.editar(Convert.ToInt32(lstLista.SelectedValue), 
+                    txtnombre.Text.Trim(),
+              txtraza.Text.Trim(), cmbSexo.Text, Convert.ToInt32(txtEdad.Value));
 
-                txtEdad.Enabled = false;
-                txtnombre.Enabled = false;
-                txtraza.Enabled = false;
-                cmbSexo.Enabled = false;
+                if (res == "ok")
+                {
+                    MessageBox.Show("Se guardo con exito");
+                    cargaLista();
+                    LimpiaCajas();
 
-                lstLista.Enabled = true;
-                btnEliminar.Enabled = true;
-                btnEditar.Enabled = true;
-                btnNuevo.Enabled = true;
+                    txtEdad.Enabled = false;
+                    txtnombre.Enabled = false;
+                    txtraza.Enabled = false;
+                    cmbSexo.Enabled = false;
+
+                    lstLista.Enabled = true;
+                    btnEliminar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnNuevo.Enabled = true;
 
 
-                btnGuardar.Enabled = false;
+                    btnGuardar.Enabled = false;
 
 
+                }
+                else
+                {
+                    MessageBox.Show(res);
+                }
             }
-            else
-            {
-                MessageBox.Show(res);
+            else {  // aqui a a insertar
+                var res = _animalController.Nuevo(txtnombre.Text.Trim(),
+              txtraza.Text.Trim(), cmbSexo.Text, Convert.ToInt32(txtEdad.Value));
+
+                if (res == "ok")
+                {
+                    MessageBox.Show("Se guardo con exito");
+                    cargaLista();
+                    LimpiaCajas();
+
+                    txtEdad.Enabled = false;
+                    txtnombre.Enabled = false;
+                    txtraza.Enabled = false;
+                    cmbSexo.Enabled = false;
+
+                    lstLista.Enabled = true;
+                    btnEliminar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnNuevo.Enabled = true;
+
+
+                    btnGuardar.Enabled = false;
+
+
+                }
+                else
+                {
+                    MessageBox.Show(res);
+                }
             }
+
+          
         }
 
         public void LimpiaCajas()
@@ -92,9 +131,24 @@ namespace Sistemas_Animales
             AnimalModel animal = _animalController.uno(Convert.ToInt32(lstLista.SelectedValue));
             txtraza.Text = animal.Raza;
             txtEdad.Value = animal.Edad;
-            txtnombre.Text =animal.Nombre;
-            cmbSexo.SelectedValue = animal.Sexo;
+            txtnombre.Text = animal.Nombre;
+            cmbSexo.Text = animal.Sexo;
 
+            editar = true;
+
+
+        }
+
+        private void lstLista_DoubleClick(object sender, EventArgs e)
+        {
+            AnimalModel animal = _animalController.uno(Convert.ToInt32(lstLista.SelectedValue));
+            if (animal !=null)
+            {
+                txtEdad.Value = animal.Edad;
+                txtnombre.Text = animal.Nombre;
+                txtraza.Text = animal.Raza;
+                cmbSexo.Text = animal.Sexo;
+            }
         }
     }
 }

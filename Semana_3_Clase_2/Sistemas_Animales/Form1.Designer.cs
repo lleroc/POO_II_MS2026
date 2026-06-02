@@ -164,6 +164,7 @@
             lstLista.Size = new Size(200, 283);
             lstLista.TabIndex = 1;
             lstLista.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            lstLista.DoubleClick += lstLista_DoubleClick;
             // 
             // label2
             // 
