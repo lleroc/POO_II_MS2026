@@ -39,6 +39,8 @@
             lstLista = new ListBox();
             label2 = new Label();
             panel3 = new Panel();
+            label7 = new Label();
+            pictureBox1 = new PictureBox();
             label6 = new Label();
             txtEdad = new NumericUpDown();
             cmbSexo = new ComboBox();
@@ -51,6 +53,7 @@
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtEdad).BeginInit();
             SuspendLayout();
             // 
@@ -60,7 +63,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(494, 59);
+            panel1.Size = new Size(465, 59);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -91,7 +94,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(104, 304);
+            tableLayoutPanel1.Size = new Size(104, 378);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // btnEliminar
@@ -101,10 +104,11 @@
             btnEliminar.ForeColor = Color.Red;
             btnEliminar.Location = new Point(3, 213);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(98, 88);
+            btnEliminar.Size = new Size(98, 162);
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnEditar
             // 
@@ -123,6 +127,7 @@
             // 
             btnGuardar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnGuardar.Dock = DockStyle.Fill;
+            btnGuardar.Enabled = false;
             btnGuardar.ForeColor = Color.Red;
             btnGuardar.Location = new Point(3, 73);
             btnGuardar.Name = "btnGuardar";
@@ -150,9 +155,9 @@
             panel2.Controls.Add(lstLista);
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(294, 59);
+            panel2.Location = new Point(265, 59);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 304);
+            panel2.Size = new Size(200, 378);
             panel2.TabIndex = 2;
             // 
             // lstLista
@@ -161,7 +166,7 @@
             lstLista.FormattingEnabled = true;
             lstLista.Location = new Point(0, 21);
             lstLista.Name = "lstLista";
-            lstLista.Size = new Size(200, 283);
+            lstLista.Size = new Size(200, 357);
             lstLista.TabIndex = 1;
             lstLista.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             lstLista.DoubleClick += lstLista_DoubleClick;
@@ -179,6 +184,8 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(txtEdad);
             panel3.Controls.Add(cmbSexo);
@@ -190,14 +197,34 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(104, 59);
             panel3.Name = "panel3";
-            panel3.Size = new Size(190, 304);
+            panel3.Size = new Size(161, 378);
             panel3.TabIndex = 3;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F);
+            label7.Location = new Point(19, 248);
+            label7.Name = "label7";
+            label7.Size = new Size(125, 21);
+            label7.TabIndex = 9;
+            label7.Text = "Arrastre y Suelte";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(9, 272);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(135, 94);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            pictureBox1.DragDrop += pictureBox1_DragDrop;
+            pictureBox1.DragEnter += pictureBox1_DragEnter;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(9, 198);
+            label6.Location = new Point(9, 189);
             label6.Name = "label6";
             label6.Size = new Size(44, 21);
             label6.TabIndex = 7;
@@ -206,7 +233,7 @@
             // txtEdad
             // 
             txtEdad.Enabled = false;
-            txtEdad.Location = new Point(24, 222);
+            txtEdad.Location = new Point(24, 213);
             txtEdad.Name = "txtEdad";
             txtEdad.Size = new Size(120, 23);
             txtEdad.TabIndex = 6;
@@ -235,7 +262,7 @@
             // 
             txtraza.Enabled = false;
             txtraza.Font = new Font("Segoe UI", 12F);
-            txtraza.Location = new Point(24, 99);
+            txtraza.Location = new Point(23, 102);
             txtraza.Name = "txtraza";
             txtraza.Size = new Size(121, 29);
             txtraza.TabIndex = 3;
@@ -273,7 +300,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(494, 363);
+            ClientSize = new Size(465, 437);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(tableLayoutPanel1);
@@ -288,6 +315,7 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtEdad).EndInit();
             ResumeLayout(false);
         }
@@ -313,5 +341,7 @@
         private Label label3;
         private Label label6;
         private NumericUpDown txtEdad;
+        private Label label7;
+        private PictureBox pictureBox1;
     }
 }
