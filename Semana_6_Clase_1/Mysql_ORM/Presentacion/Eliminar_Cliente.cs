@@ -4,10 +4,10 @@ using Mysql_ORM.Logica;
 
 namespace Mysql_ORM.Presentacion
 {
-    public partial class Editar_Cliente : Form
+    public partial class Eliminar_Cliente : Form
     {
         private readonly ClienteServicio _clienteServicio;
-        public Editar_Cliente()
+        public Eliminar_Cliente()
         {
             InitializeComponent();
             _clienteServicio = new ClienteServicio();
@@ -19,21 +19,11 @@ namespace Mysql_ORM.Presentacion
             if (existe == null)
             {
                 MessageBox.Show("Cliente no encontrado");
-               
                 this.Close();
             }
-
-            existe.apellido = txtApellido.Text.Trim();
-            existe.correo = txtCorreo.Text.Trim();
-            existe.direccion = txtDireccion.Text.Trim();
-            existe.nombre = txtNombre.Text.Trim();
-            existe.telefono = txtTelefono.Text.Trim();
-            existe.id = Program.idCliente;
-            
-            if (_clienteServicio.actualizar(existe) == "ok")
+            if (_clienteServicio.eliminar(Program.idCliente) == "ok")
             {
-                MessageBox.Show("Cliente Guardado");
-                Program.resultado_Dialog = DialogResult.OK;
+                MessageBox.Show("Cliente Eliminado");
                 this.Close();
             }
             else
@@ -41,20 +31,20 @@ namespace Mysql_ORM.Presentacion
                 MessageBox.Show("Existio un error al  guardar");
             }
         }
-
         private void Editar_Cliente_Load(object sender, EventArgs e)
         {
             CargaCliente();
         }
-
-        public void CargaCliente() {
+        public void CargaCliente()
+        {
             var cliente = _clienteServicio.uno(Program.idCliente);
             if (cliente == null)
             {
                 MessageBox.Show("Cliente no encontrado");
                 this.Close();
             }
-            else {
+            else
+            {
                 txtApellido.Text = cliente.apellido;
                 txtCorreo.Text = cliente.correo;
                 txtDireccion.Text = cliente.direccion;
@@ -62,5 +52,7 @@ namespace Mysql_ORM.Presentacion
                 txtTelefono.Text = cliente.telefono;
             }
         }
+
+
     }
 }

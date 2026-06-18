@@ -2,7 +2,8 @@ namespace Mysql_ORM
 {
     public static class Program
     {
-        public int idCliente = 0;
+        public static int idCliente = 0;
+        public static DialogResult resultado_Dialog = DialogResult.None;
 
         /// <summary>
         ///  The main entry point for the application.

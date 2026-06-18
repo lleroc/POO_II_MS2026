@@ -1,6 +1,6 @@
 ﻿namespace Mysql_ORM.Presentacion
 {
-    partial class Editar_Cliente
+    partial class Eliminar_Cliente
     {
         /// <summary>
         /// Required designer variable.
@@ -49,7 +49,7 @@
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 45);
             btnGuardar.TabIndex = 0;
-            btnGuardar.Text = "Guardar";
+            btnGuardar.Text = "Eliminar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
@@ -65,15 +65,17 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Enabled = false;
             label1.Font = new Font("Segoe UI", 14F);
             label1.Location = new Point(52, 9);
             label1.Name = "label1";
-            label1.Size = new Size(125, 25);
+            label1.Size = new Size(145, 25);
             label1.TabIndex = 2;
-            label1.Text = "Editar Cliente";
+            label1.Text = "Eliminar Cliente";
             // 
             // txtNombre
             // 
+            txtNombre.Enabled = false;
             txtNombre.Location = new Point(27, 73);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(156, 23);
@@ -82,6 +84,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Enabled = false;
             label2.Location = new Point(27, 55);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
@@ -91,6 +94,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Enabled = false;
             label3.Location = new Point(27, 103);
             label3.Name = "label3";
             label3.Size = new Size(51, 15);
@@ -99,6 +103,7 @@
             // 
             // txtApellido
             // 
+            txtApellido.Enabled = false;
             txtApellido.Location = new Point(27, 121);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(156, 23);
@@ -107,6 +112,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.Enabled = false;
             label4.Location = new Point(27, 150);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
@@ -115,6 +121,7 @@
             // 
             // txtDireccion
             // 
+            txtDireccion.Enabled = false;
             txtDireccion.Location = new Point(27, 168);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(156, 23);
@@ -123,6 +130,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.Enabled = false;
             label5.Location = new Point(27, 199);
             label5.Name = "label5";
             label5.Size = new Size(52, 15);
@@ -131,6 +139,7 @@
             // 
             // txtTelefono
             // 
+            txtTelefono.Enabled = false;
             txtTelefono.Location = new Point(27, 217);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(156, 23);
@@ -139,6 +148,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.Enabled = false;
             label6.Location = new Point(27, 247);
             label6.Name = "label6";
             label6.Size = new Size(43, 15);
@@ -147,12 +157,13 @@
             // 
             // txtCorreo
             // 
+            txtCorreo.Enabled = false;
             txtCorreo.Location = new Point(27, 265);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(156, 23);
             txtCorreo.TabIndex = 11;
             // 
-            // Editar_Cliente
+            // Eliminar_Cliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -170,8 +181,8 @@
             Controls.Add(label1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
-            Name = "Editar_Cliente";
-            Text = "Editar Cliente";
+            Name = "Eliminar_Cliente";
+            Text = "Eliminar Cliente";
             Load += Editar_Cliente_Load;
             ResumeLayout(false);
             PerformLayout();

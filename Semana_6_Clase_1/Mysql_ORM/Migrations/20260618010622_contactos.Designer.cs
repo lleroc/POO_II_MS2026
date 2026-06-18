@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mysql_ORM.Datos;
 
@@ -10,9 +11,11 @@ using Mysql_ORM.Datos;
 namespace Mysql_ORM.Migrations
 {
     [DbContext(typeof(ModeloCapasDbContext))]
-    partial class ModeloCapasDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260618010622_contactos")]
+    partial class contactos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -70,6 +70,7 @@
             button2.TabIndex = 3;
             button2.Text = "Eliminar Cliente";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 
@@ -82,6 +83,7 @@
             Controls.Add(listBox1);
             Name = "Form1";
             Text = "Form1";
+            Activated += Form1_Activated;
             Load += Form1_Load;
             ResumeLayout(false);
         }

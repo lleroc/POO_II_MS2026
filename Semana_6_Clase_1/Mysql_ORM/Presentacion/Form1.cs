@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+using Mysql_ORM.Datos;
 using Mysql_ORM.Logica;
 using Mysql_ORM.Presentacion;
 
@@ -19,6 +21,8 @@ namespace Mysql_ORM
         public void Llena_lista()
         {
             listBox1.DataSource = null;
+            listBox1.Items.Clear();
+
             listBox1.DataSource = _clienteServicio.todos();
             listBox1.ValueMember = "id";
             listBox1.DisplayMember = "NombreCompleto";
@@ -32,8 +36,37 @@ namespace Mysql_ORM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var editar = new Editar_Cliente();  
-            editar.ShowDialog();    
+            if (listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un item de la lista");
+                return;
+            }
+            Program.idCliente = (int)listBox1.SelectedValue;
+            var editar = new Editar_Cliente();
+
+            if (editar.ShowDialog() == DialogResult.Cancel)
+            {
+                Llena_lista();
+            }
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un item de la lista");
+                return;
+            }
+            Program.idCliente = (int)listBox1.SelectedValue;
+            var frm_eliminar = new Eliminar_Cliente();
+            if (frm_eliminar.ShowDialog() == DialogResult.Cancel) {
+                Llena_lista();
+            }
         }
     }
 }
